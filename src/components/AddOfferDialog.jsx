@@ -23,8 +23,7 @@ export default function AddOfferDialog(props) {
 
   const handleSubmit = () => {
     setOpen(false)
-    props.addOffer({ title, description, phone, email, viewing: 0 })
-    console.log("description len: ", description.length);
+    props.addOffer({ title, description, phone, email, viewing: 1 })
   }
   const handleClose = () => {
     setOpen(false)

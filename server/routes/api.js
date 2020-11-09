@@ -10,15 +10,18 @@ require('dotenv').config()
 let users = {}
 let logInTokens = {}
 let id = 1
-let offers = [{id : id, title : "car", description : "nice black car", phone : "0544257318", email : "lihiitz@gmail.com", viewing : 0}]
+let offers = {
+    1 : {id: 1, title : "car", description : "nice black car", phone : "0544257318", email : "lihiitz@gmail.com", viewing : 1}
+}
 // let viewers = {} // {1 : ["lihi", "mai"] }
 
 
 
 const setViewing = function(id, num, res){
-    let offer = offers.find(o => o.id === Number(id))
-    if(offer){
-        offer.viewing += num
+    for (const [k, v] of Object.entries(offers)){
+        if (k === id){
+            v.viewing += num
+        }
     }
     res.send()
 }
@@ -62,8 +65,8 @@ router.post('/viewingDown/:id', function(req, res) {
 
 router.post('/offer', verify, function(req, res) {
     let offer = req.body.offer
-    offer.id = ++id
-    offers.push(offer)
+    offer["id"] = ++id
+    offers[id] = offer
     res.send(offers)
 })
 

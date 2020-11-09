@@ -18,6 +18,7 @@ export default function Offer(props){
     const [open, setOpen] = useState(false);
 
     const handleClickOpen = (id) => {
+        console.log("offer id: ", id);
         setOpen(true)
             const config = {
               headers: { authorization: `Bearer ${localStorage.getItem("token")}` }
