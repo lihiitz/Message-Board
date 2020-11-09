@@ -53,9 +53,9 @@ export default function Offer(props) {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small" color="primary">
+                    <Typography size="small" color="primary">
                         {props.offer.viewing}
-                    </Button>
+                    </Typography>
                     <Button onClick={() => handleClickOpen(props.offer.id)} size="small" color="primary">
                         Show more info
 </Button>
@@ -64,7 +64,7 @@ export default function Offer(props) {
                         <DialogContent>
                             <Typography variant="h5" align="center" color="textSecondary" paragraph>
                                 {props.offer.description}
-                                <br/>
+                                <br />
                                 <a onClick={`javascript:window.open('mailto:${props.offer.email}', 'mail');event.preventDefault()`} href={`mailto:${props.offer.email}`}>
                                     {props.offer.email}
                                 </a>

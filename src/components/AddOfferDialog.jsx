@@ -26,7 +26,7 @@ export default function AddOfferDialog(props) {
     let descriptionHeader = description.substring(0, 5)
     descriptionHeader += " ..."
 
-    props.addOffer({ title, descriptionHeader, description, phone, email, viewing: 1 })
+    props.addOffer({ title, descriptionHeader, description, phone, email, viewing: 0 })
   }
   const handleClose = () => {
     setOpen(false)
