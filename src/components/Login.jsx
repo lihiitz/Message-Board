@@ -13,7 +13,7 @@ import Axios from 'axios';
 import { apiBaseUrl } from '../constants';
 import { TextField } from '@material-ui/core';
 import Register from './Register';
-import OffersPage2 from './OffersPage2';
+import OffersPage from './OffersPage';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -49,13 +49,15 @@ export default function Login(props) {
       "email": email,
       "password": password
     }
-
-    Axios.post(apiBaseUrl + '/login', payload)
+    if (!email || !password){
+      alert("please fill out all fields")
+    }else{
+      Axios.post(apiBaseUrl + '/login', payload)
       .then((response) => {
         if (response.status === 200) {
           const token = response.data
           localStorage.setItem('token', token)
-          let uploadScreen = <OffersPage2 key={"offerPage"} appContext={props.appContext} />
+          let uploadScreen = <OffersPage key={"offerPage"} appContext={props.appContext} />
           props.appContext.setState({ uploadScreen })
         }
         else if (response.status == 204) {
@@ -69,7 +71,9 @@ export default function Login(props) {
       })
       .catch(function (error) {
         console.log(error);
-      });
+      })
+    }
+    
   }
   return (
     <Container component="main" maxWidth="xs">

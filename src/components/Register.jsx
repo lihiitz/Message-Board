@@ -13,9 +13,8 @@ import Container from '@material-ui/core/Container';
 import Axios from 'axios';
 import { apiBaseUrl } from '../constants';
 import { TextField } from '@material-ui/core';
-import OffersPage2 from './OffersPage2'
+import OffersPage from './OffersPage'
 import Login from './Login'
-import OffersPage from './OffersPage';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -56,17 +55,21 @@ export default function Register(props) {
       email: email,
       password: password
     }
-    Axios.post(apiBaseUrl + '/register', payload)
+    if (!fName || !lName || !email || !password){
+      alert("please fill out all fields")
+    }else{
+      Axios.post(apiBaseUrl + '/register', payload)
       .then((response) => {
         if (response.data.code === 200) {
           console.log("registration successfully")
-          let uploadScreen = <OffersPage2 appContext={props.appContext} />
+          let uploadScreen = <OffersPage appContext={props.appContext} />
           props.appContext.setState({ uploadScreen })
         }
       })
       .catch(function (error) {
         console.log(error);
       })
+    }
   }
   return (
     <Container component="main" maxWidth="xs">

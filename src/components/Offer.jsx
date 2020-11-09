@@ -1,29 +1,18 @@
 
 import React, { useEffect, useState } from 'react';
-import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
-import CameraIcon from '@material-ui/icons/PhotoCamera';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
 import { apiBaseUrl } from '../constants';
 import Axios from 'axios';
-import AddOfferDialog from './AddOfferDialog';
 import { DialogTitle } from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import { Input } from '@material-ui/core';
 
 export default function Offer(props){
     const [open, setOpen] = useState(false);
@@ -73,10 +62,11 @@ export default function Offer(props){
             <DialogTitle id="form-dialog-title">{props.offer.title}</DialogTitle>
             <DialogContent>
                 <Typography variant="h5" align="center" color="textSecondary" paragraph>
-                <a onClick={`javascript:window.open('mailto:${props.offer.email}', 'mail');event.preventDefault()`} href={`mailto:${props.offer.email}`}>
-                            {props.offer.email}
-                          </a>
-Phone: {props.offer.phone}
+                    <a onClick={`javascript:window.open('mailto:${props.offer.email}', 'mail');event.preventDefault()`} href={`mailto:${props.offer.email}`}>
+                        {props.offer.email}
+                    </a>
+                    <br/>
+                    Phone: {props.offer.phone}
                 </Typography>
             </DialogContent>
             <DialogActions>

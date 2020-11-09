@@ -11,7 +11,7 @@ let users = {}
 let logInTokens = {}
 let id = 1
 let offers = [{id : id, title : "car", description : "nice black car", phone : "0544257318", email : "lihiitz@gmail.com", viewing : 0}]
-let viewers = {} // {1 : ["lihi", "mai"] }
+// let viewers = {} // {1 : ["lihi", "mai"] }
 
 
 
@@ -23,42 +23,40 @@ const setViewing = function(id, num, res){
     res.send()
 }
 
-router.post('/viewDown/:offerId', verify, function(req, res){
-    let id = Number(req.params.offerId)
-    let token = req.headers.authorization.split(' ')[1]
-    let email = logInTokens[token]
-    let offerViewers = [...viewers[id]]
-    let viewerIndex = offerViewers.findIndex(v => v === email)
-    if (viewerIndex !== -1){
-        offerViewers.splice(viewerIndex, 1)
-        viewers[id] = [...offerViewers]
-        setViewing(id, -1, res)
-    }
-})
+// router.post('/viewDown/:offerId', verify, function(req, res){
+//     let id = Number(req.params.offerId)
+//     let token = req.headers.authorization.split(' ')[1]
+//     let email = logInTokens[token]
+//     let offerViewers = [...viewers[id]]
+//     let viewerIndex = offerViewers.findIndex(v => v === email)
+//     if (viewerIndex !== -1){
+//         offerViewers.splice(viewerIndex, 1)
+//         viewers[id] = [...offerViewers]
+//         setViewing(id, -1, res)
+//     }
+// })
 
-router.post('/viewUp/:offerId', verify, function(req, res){
-    let id = Number(req.params.offerId)
-    let token = req.headers.authorization.split(' ')[1]
-    let email = logInTokens[token]
-    let offerViewers = []
-    if(viewers[id]){
-        offerViewers = [...viewers[id]]
-    }
-    let viewerIndex = offerViewers.findIndex(v => v === email)
-    if (viewerIndex === -1){
-        offerViewers.push(email)
-        viewers[id] = [...offerViewers]
-        setViewing(id, 1, res)
-    }
+// router.post('/viewUp/:offerId', verify, function(req, res){
+//     let id = Number(req.params.offerId)
+//     let token = req.headers.authorization.split(' ')[1]
+//     let email = logInTokens[token]
+//     let offerViewers = []
+//     if(viewers[id]){
+//         offerViewers = [...viewers[id]]
+//     }
+//     let viewerIndex = offerViewers.findIndex(v => v === email)
+//     if (viewerIndex === -1){
+//         offerViewers.push(email)
+//         viewers[id] = [...offerViewers]
+//         setViewing(id, 1, res)
+//     }
 
-})
+// })
 router.post('/viewingUp/:id', function(req, res) {
-    console.log("in view up, id = ", req.params.id);
     setViewing(req.params.id, 1, res)
 })
 
 router.post('/viewingDown/:id', function(req, res) {
-    console.log("in view down, id = ", req.params.id);
     setViewing(req.params.id, -1, res)
 })
 
