@@ -17,7 +17,9 @@ let viewers = {} // {1 : ["lihi", "mai"] }
 
 const setViewing = function(id, num, res){
     let offer = offers.find(o => o.id === Number(id))
-    offer.viewing += num
+    if(offer){
+        offer.viewing += num
+    }
     res.send()
 }
 
@@ -51,13 +53,13 @@ router.post('/viewUp/:offerId', verify, function(req, res){
 
 })
 router.post('/viewingUp/:id', function(req, res) {
+    console.log("in view up, id = ", req.params.id);
     setViewing(req.params.id, 1, res)
 })
 
 router.post('/viewingDown/:id', function(req, res) {
-    console.log(offers);
+    console.log("in view down, id = ", req.params.id);
     setViewing(req.params.id, -1, res)
-    console.log(offers);
 })
 
 router.post('/offer', verify, function(req, res) {
@@ -74,7 +76,6 @@ router.get('/offers', verify, function(req, res) {
 router.post('/login', function (req, res) {//TO DO - change to get?
     let email = req.body.email
     let password = req.body.password
-    console.log("email and pass: ", email, password);
 
     if (users[email] && users[email].password === password){
         let payLoad = {email}
@@ -101,7 +102,6 @@ router.post('/login', function (req, res) {//TO DO - change to get?
 router.post('/register', function (req, res) {
     let newUser = req.body
     users[newUser.email] = newUser
-    console.log("users:", users);
     res.send({code : 200})
 })
 

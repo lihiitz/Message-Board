@@ -13,7 +13,7 @@ import Axios from 'axios';
 import { apiBaseUrl } from '../constants';
 import { TextField } from '@material-ui/core';
 import Register from './Register';
-import OffersPage from './OffersPage';
+import OffersPage2 from './OffersPage2';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -55,7 +55,7 @@ export default function Login(props) {
         if (response.status === 200) {
           const token = response.data
           localStorage.setItem('token', token)
-          let uploadScreen = <OffersPage key={"offerPage"} appContext={props.appContext} />
+          let uploadScreen = <OffersPage2 key={"offerPage"} appContext={props.appContext} />
           props.appContext.setState({ uploadScreen })
         }
         else if (response.status == 204) {
