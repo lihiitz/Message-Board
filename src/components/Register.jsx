@@ -13,7 +13,7 @@ import Container from '@material-ui/core/Container';
 import Axios from 'axios';
 import { apiBaseUrl } from '../constants';
 import { TextField } from '@material-ui/core';
-
+import OffersPage2 from './OffersPage2'
 import Login from './Login'
 import OffersPage from './OffersPage';
 
@@ -60,7 +60,7 @@ export default function Register(props) {
       .then((response) => {
         if (response.data.code === 200) {
           console.log("registration successfully")
-          let uploadScreen = <OffersPage appContext={props.appContext} />
+          let uploadScreen = <OffersPage2 appContext={props.appContext} />
           props.appContext.setState({ uploadScreen })
         }
       })
