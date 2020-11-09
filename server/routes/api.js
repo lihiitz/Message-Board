@@ -11,7 +11,7 @@ let users = {}
 let logInTokens = {}
 let id = 1
 let offers = {
-    1 : {id: 1, title : "car", description : "nice black car", phone : "0544257318", email : "lihiitz@gmail.com", viewing : 1}
+    1 : {id: 1, title : "car",descriptionHeader : "nice ...", description : "nice black car", phone : "0544257318", email : "lihiitz@gmail.com", viewing : 1}
 }
 // let viewers = {} // {1 : ["lihi", "mai"] }
 

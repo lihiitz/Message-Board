@@ -94,7 +94,6 @@ export default function OffersPage(props) {
             <CssBaseline />
             <AppBar position="relative">
                 <Toolbar>
-                    {/* <CameraIcon className={classes.icon} /> */}
                     <Button onClick={handleLogOut}>
                         Log out
             </Button>
