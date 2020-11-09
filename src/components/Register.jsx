@@ -142,7 +142,7 @@ export default function Register(props) {
             Submit
           </Button>
           <Button className={classes.submit} fullWidth variant="contained" color="primary" onClick={() => handleSignIn()}>
-            Already have an account? Sign in
+            Already have an account? Log in
           </Button>
         </form>
       </div>

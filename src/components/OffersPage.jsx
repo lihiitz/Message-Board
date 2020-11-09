@@ -19,7 +19,10 @@ class OffersPage extends Component {
     }
 
     handleClick = (newOffer) => {
-        Axios.post(apiBaseUrl + '/offer', {offer: newOffer})
+        const config = {
+            headers: { authorization: `Bearer ${localStorage.getItem("token")}` }
+        }
+        Axios.post(apiBaseUrl + '/offer', {offer: newOffer}, config)
         .then( (response) => {
             this.setState({
                 offers : response.data

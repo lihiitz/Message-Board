@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
@@ -16,6 +16,7 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import Axios from 'axios';
 import {apiBaseUrl} from '../constants'
+import { Button, Link } from '@material-ui/core';
 
 export default function OffersTable(props) {
   return (
@@ -48,7 +49,7 @@ const useRowStyles = makeStyles({
 
 function Row(props) {
     const { row } = props;
-    const [isOpen, setIsOpen] = React.useState(false);
+    const [isOpen, setIsOpen] = useState(false)
     const classes = useRowStyles();
   
     const handleClick = (id) => {
@@ -96,7 +97,11 @@ function Row(props) {
                       <TableRow key={row.title}>
                         <TableCell component="th" scope="row">{row.description}</TableCell>
                         <TableCell>{row.phone}</TableCell>
-                        <TableCell align="right">{row.email}</TableCell>
+                        <TableCell align="right">
+                          <a onClick={`javascript:window.open('mailto:${row.email}', 'mail');event.preventDefault()`} href={`mailto:${row.email}`}>
+                            {row.email}
+                          </a>
+                          </TableCell>
                         <TableCell align="right">{row.viewing}</TableCell>
                       </TableRow>
                   </TableBody>

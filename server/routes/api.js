@@ -16,11 +16,8 @@ let viewers = {} // {1 : ["lihi", "mai"] }
 
 
 const setViewing = function(id, num, res){
-    // console.log("in setViewing: ", offers);
     let offer = offers.find(o => o.id === Number(id))
-    // console.log("in setViewing: ", offer)
     offer.viewing += num
-    // console.log("in setViewing: ", offer);
     res.send()
 }
 
@@ -63,7 +60,7 @@ router.post('/viewingDown/:id', function(req, res) {
     console.log(offers);
 })
 
-router.post('/offer', function(req, res) {
+router.post('/offer', verify, function(req, res) {
     let offer = req.body.offer
     offer.id = ++id
     offers.push(offer)
@@ -81,11 +78,6 @@ router.post('/login', function (req, res) {//TO DO - change to get?
 
     if (users[email] && users[email].password === password){
         let payLoad = {email}
-        //create the access token with the shorter lifespan
-        // let accessToken = jwt.sign(payLoad, process.env.ACCESS_TOKEN_SECRET, {
-        //     algorithm: "HS256",
-        //     expiresIn: process.env.ACCESS_TOKEN_LIFE
-        // })
         let accessToken = jwt.sign(payLoad, process.env.ACCESS_TOKEN_SECRET)
         logInTokens[accessToken] = email
         //create the refresh token with the longer lifespan
@@ -107,7 +99,6 @@ router.post('/login', function (req, res) {//TO DO - change to get?
 })
 
 router.post('/register', function (req, res) {
-console.log("in register api: ", req.body);
     let newUser = req.body
     users[newUser.email] = newUser
     console.log("users:", users);
