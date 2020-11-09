@@ -62,7 +62,7 @@ export default function Register(props) {
       .then((response) => {
         if (response.data.code === 200) {
           console.log("registration successfully")
-          let uploadScreen = <OffersPage appContext={props.appContext} />
+          let uploadScreen = <Login appContext={props.appContext} />
           props.appContext.setState({ uploadScreen })
         }
       })
