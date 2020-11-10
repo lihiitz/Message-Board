@@ -11,7 +11,7 @@ let users = {}
 let logInTokens = {}
 let id = 1
 let offers = {
-    1 : {id: 1, title : "car",descriptionHeader : "Chevrolet ...", description : "nice black car", phone : "0544257318", email : "lihiitz@gmail.com", viewing : 0}
+    1 : {id: 1, title : "car",descriptionHeader : "2017 Cadil ...", description : "2017 Cadillac CT6. AWD 3.6L Luxury 4dr Sedan. $30,999 $461/mo*", phone : "0544257318", email : "lihiitz@gmail.com", viewing : 0}
 }
 // let viewers = {} // {1 : ["lihi", "mai"] }
 

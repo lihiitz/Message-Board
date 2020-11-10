@@ -23,10 +23,14 @@ export default function AddOfferDialog(props) {
 
   const handleSubmit = () => {
     setOpen(false)
-    let descriptionHeader = description.substring(0, 5)
-    descriptionHeader += " ..."
-
-    props.addOffer({ title, descriptionHeader, description, phone, email, viewing: 0 })
+    if (!title || !description || !email || !phone){
+      alert("please fill out all fields")
+    }else{
+      let descriptionHeader = description.substring(0, 10)
+      descriptionHeader += " ..."
+  
+      props.addOffer({ title, descriptionHeader, description, phone, email, viewing: 0 })
+    }
   }
   const handleClose = () => {
     setOpen(false)
