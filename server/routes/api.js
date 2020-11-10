@@ -18,10 +18,8 @@ let offers = {
 
 
 const setViewing = function(id, num, res){
-    for (const [k, v] of Object.entries(offers)){
-        if (k === id){
-            v.viewing += num
-        }
+    if (offers[id]){
+        offers[id].viewing += num
     }
     res.send()
 }
@@ -82,13 +80,6 @@ router.post('/login', function (req, res) {//TO DO - change to get?
         let payLoad = {email}
         let accessToken = jwt.sign(payLoad, process.env.ACCESS_TOKEN_SECRET)
         logInTokens[accessToken] = email
-        //create the refresh token with the longer lifespan
-        // let refreshToken = jwt.sign(payLoad, process.env.REFRESH_TOKEN_SECRET, {
-        //     algorithm: "HS256",
-        //     expiresIn: process.env.REFRESH_TOKEN_LIFE
-        // })
-        //store the refresh token in the user array
-        // users[email].refreshToken = refreshToken
         res.json(accessToken)
         res.status(200).send()
     }
